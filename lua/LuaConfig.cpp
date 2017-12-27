@@ -1,6 +1,6 @@
-#include "LuaScript.hpp"
+#include "LuaConfig.hpp"
 
-LuaScript::LuaScript(const std::string& filename) {
+LuaConfig::LuaConfig(const std::string& filename) {
     L = luaL_newstate();
     if (luaL_loadfile(L, filename.c_str()) || lua_pcall(L, 0, 0, 0)) {
         std::cout<<"Error: failed to load ("<<filename<<")"<<std::endl;
@@ -10,15 +10,15 @@ LuaScript::LuaScript(const std::string& filename) {
     if(L) luaL_openlibs(L);
 }
 
-LuaScript::~LuaScript() {
+LuaConfig::~LuaConfig() {
     if(L) lua_close(L);
 }
 
-void LuaScript::printError(const std::string& variableName, const std::string& reason) {
+void LuaConfig::printError(const std::string& variableName, const std::string& reason) {
     std::cout<<"Error: can't get ["<<variableName<<"]. "<<reason<<std::endl;
 }
 
-std::vector<int> LuaScript::getIntVector(const std::string& name) {
+std::vector<int> LuaConfig::getIntVector(const std::string& name) {
     std::vector<int> v;
     lua_gettostack(name.c_str());
     if(lua_isnil(L, -1)) { // array is not found
@@ -33,7 +33,7 @@ std::vector<int> LuaScript::getIntVector(const std::string& name) {
     return v;
 }
 
-std::vector<std::string> LuaScript::getTableKeys(const std::string& name) {
+std::vector<std::string> LuaConfig::getTableKeys(const std::string& name) {
     std::string code =
         "function getKeys(name) "
         "s = \"\""

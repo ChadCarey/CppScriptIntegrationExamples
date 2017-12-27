@@ -1,5 +1,5 @@
-#ifndef LUASCRIPT_H
-#define LUASCRIPT_H
+#ifndef LUACONFIG_H
+#define LUACONFIG_H
 
 // https://eliasdaler.wordpress.com/2013/10/11/lua_cpp_binder/
 
@@ -8,10 +8,10 @@
 #include <iostream>
 
 #include <lua5.2/lua.hpp>
-class LuaScript {
+class LuaConfig {
 public:
-    LuaScript(const std::string& filename);
-    ~LuaScript();
+    LuaConfig(const std::string& filename);
+    ~LuaConfig();
     void printError(const std::string& variableName, const std::string& reason);
     std::vector<int> getIntVector(const std::string& name);
     std::vector<std::string> getTableKeys(const std::string& name);
@@ -95,12 +95,12 @@ private:
 // Specializations
 
 template <>
-inline bool LuaScript::lua_get<bool>(const std::string& variableName) {
+inline bool LuaConfig::lua_get<bool>(const std::string& variableName) {
     return (bool)lua_toboolean(L, -1);
 }
 
 template <>
-inline float LuaScript::lua_get<float>(const std::string& variableName) {
+inline float LuaConfig::lua_get<float>(const std::string& variableName) {
     if(!lua_isnumber(L, -1)) {
       printError(variableName, "Not a number");
     }
@@ -108,7 +108,7 @@ inline float LuaScript::lua_get<float>(const std::string& variableName) {
 }
 
 template <>
-inline int LuaScript::lua_get<int>(const std::string& variableName) {
+inline int LuaConfig::lua_get<int>(const std::string& variableName) {
     if(!lua_isnumber(L, -1)) {
       printError(variableName, "Not a number");
     }
@@ -116,7 +116,7 @@ inline int LuaScript::lua_get<int>(const std::string& variableName) {
 }
 
 template <>
-inline std::string LuaScript::lua_get<std::string>(const std::string& variableName) {
+inline std::string LuaConfig::lua_get<std::string>(const std::string& variableName) {
     std::string s = "null";
     if(lua_isstring(L, -1)) {
       s = std::string(lua_tostring(L, -1));
@@ -127,7 +127,7 @@ inline std::string LuaScript::lua_get<std::string>(const std::string& variableNa
 }
 
 template<>
-inline std::string LuaScript::lua_getdefault<std::string>() {
+inline std::string LuaConfig::lua_getdefault<std::string>() {
   return "null";
 }
 

@@ -1,10 +1,10 @@
 #include <iostream>
 #include <string>
 
-#include "LuaScript.hpp"
+#include "LuaConfig.hpp"
 
 int main() {
-    LuaScript script("lua/Player.lua");
+    LuaConfig script("lua/Player.lua");
     float posX = script.get<float>("player.position.x");
     float posY = script.get<float>("player.position.y");
     std::string filename = script.get<std::string>("player.filename");
