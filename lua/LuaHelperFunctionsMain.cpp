@@ -8,7 +8,7 @@ int write(lua_State* L)
     std::cout << "C++: " << str << std::endl;
 }
 
-int LuaError(std::string message)
+void LuaError(const std::string& message)
 {
     std::cout << message << "\n";
 }

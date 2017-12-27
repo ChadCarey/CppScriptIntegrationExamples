@@ -9,5 +9,5 @@ lua_functions: lua/LuaFunctionsMain.cpp
 	g++ -o LuaFunctions.out lua/LuaFunctionsMain.cpp -llua5.2 -ldl -I/usr/include
 
 
-lua_redefine: lua/RedefiningLuaMain.cpp lua/LuaIncludes.h
-	g++ -o RedefiningLua.out lua/RedefiningLuaMain.cpp -llua5.2 -ldl -I/usr/include
+lua_helpers: lua/LuaHelperFunctionsMain.cpp lua/LuaIncludes.h
+	g++ -o LuaHelperFunctions.out lua/LuaHelperFunctionsMain.cpp -llua5.2 -ldl -I/usr/include

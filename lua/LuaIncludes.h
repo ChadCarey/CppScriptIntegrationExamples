@@ -1,13 +1,22 @@
 #include <lua5.2/lua.hpp>
 #include <string>
 
-#define AddLuaFunction(LUASTATE, FUN, NAME) \
-    lua_pushcfunction(LUASTATE, FUN); \
-    lua_setglobal(LUASTATE, NAME);
+template <typename T>
+void AddLuaFunction(lua_State* luastate, T fun, const std::string& name)
+{
+    lua_pushcfunction(luastate, fun);
+    lua_setglobal(luastate, name.c_str());
+}
 
-#define CallLuaScript(LUASTATE, NAME, ERROR_HANDLER) \
-    if(!luaL_loadfile(LUASTATE, NAME)) { \
-        lua_pcall(LUASTATE, 0,0,0); \
-    } else { \
-        ERROR_HANDLER(std::string("Error Loading: ") + std::string(NAME)); \
+void CallLuaScript(lua_State* luastate, const std::string& name, void (*errorHandler)(const std::string&))
+{
+    if(!luaL_loadfile(luastate, name.c_str()))
+    {
+        lua_pcall(luastate, 0,0,0);
     }
+    else
+    {
+        errorHandler(std::string("Error Loading: ") + name);
+    }
+    return;
+}
