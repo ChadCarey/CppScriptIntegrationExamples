@@ -1,3 +1,6 @@
+#ifndef LUA_CUSTOM_INCLUDES_H
+#define LUA_CUSTOM_INCLUDES_H
+
 #include <lua5.2/lua.hpp>
 #include <string>
 
@@ -20,3 +23,5 @@ void CallLuaScript(lua_State* luastate, const std::string& name, void (*errorHan
     }
     return;
 }
+
+#endif
