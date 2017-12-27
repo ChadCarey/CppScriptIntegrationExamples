@@ -31,5 +31,10 @@ python_string: python/RunStringMain.cpp
 python_file: python/RunFileMain.cpp
 	g++ -o PythonRunFile.out python/RunFileMain.cpp -I/usr/include/python2.7 -L/usr/lib/python2.2/config/ -lpython2.7
 
+# extending python tutorial
+# https://docs.python.org/2/extending/extending.html
+python_spam: python/spammodule.c
+	g++ -o PythonExtention.out python/spammodule.c -I/usr/include/python2.7 -L/usr/lib/python2.2/config/ -lpython2.7
+
 clean:
 	rm *.out
