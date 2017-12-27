@@ -25,6 +25,8 @@ lua_helpers: lua/LuaHelperFunctionsMain.cpp lua/LuaIncludes.h
 # 4. Expose a C++ class in python
 # 5. Try Cython
 
+python_string: python/RunStringMain.cpp
+	g++ -o PythonRunString.out python/RunStringMain.cpp -I/usr/include/python2.7 -L/usr/lib/python2.2/config/ -lpython2.7
 
 clean:
 	rm *.out
