@@ -28,5 +28,8 @@ lua_helpers: lua/LuaHelperFunctionsMain.cpp lua/LuaIncludes.h
 python_string: python/RunStringMain.cpp
 	g++ -o PythonRunString.out python/RunStringMain.cpp -I/usr/include/python2.7 -L/usr/lib/python2.2/config/ -lpython2.7
 
+python_file: python/RunFileMain.cpp
+	g++ -o PythonRunFile.out python/RunFileMain.cpp -I/usr/include/python2.7 -L/usr/lib/python2.2/config/ -lpython2.7
+
 clean:
 	rm *.out
