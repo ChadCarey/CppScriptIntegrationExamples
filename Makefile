@@ -36,8 +36,8 @@ python_file: python/RunFileMain.cpp
 python_spam: python/spammodule.c
 	g++ -o PythonExtention.out python/spammodule.c -I/usr/include/python2.7 -L/usr/lib/python2.2/config/ -lpython2.7
 
-python_class: python/AnimalClassMain.cpp
-	g++ -o PythonClassExtention.out python/AnimalClassMain.cpp -I/usr/include/python2.7 -L/usr/lib/python2.2/config/ -lpython2.7
+python_class: python/NoddyClassMain.cpp
+	g++ -o PythonClassExtention.out python/NoddyClassMain.cpp -I/usr/include/python2.7 -L/usr/lib/python2.2/config/ -lpython2.7
 
 
 clean:
