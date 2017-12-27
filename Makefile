@@ -11,3 +11,6 @@ lua_functions: lua/LuaFunctionsMain.cpp
 
 lua_helpers: lua/LuaHelperFunctionsMain.cpp lua/LuaIncludes.h
 	g++ -o LuaHelperFunctions.out lua/LuaHelperFunctionsMain.cpp -llua5.2 -ldl -I/usr/include
+
+clean:
+	rm *.out
