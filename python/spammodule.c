@@ -13,9 +13,9 @@ static PyObject* spam_system(PyObject *self, PyObject *args)
 
     if (!PyArg_ParseTuple(args, "s|i", &command, &count))
         return NULL;
-    // this just sends the commands to the unix System
     for(int i = 0; i < count; ++i)
     {
+        // this just sends the commands to the unix System
         sts = system(command);
         tsts += sts;
         if (sts < 0) {
