@@ -17,5 +17,14 @@ lua_functions: lua/LuaFunctionsMain.cpp
 lua_helpers: lua/LuaHelperFunctionsMain.cpp lua/LuaIncludes.h
 	g++ -o LuaHelperFunctions.out lua/LuaHelperFunctionsMain.cpp -llua5.2 -ldl -I/usr/include
 
+
+# Python to do
+# 1. Call python scripts using the interpreter
+# 2. Try to create a PythonConfig class that can read python formatted data
+# 3. Try to expose c functions to python
+# 4. Expose a C++ class in python
+# 5. Try Cython
+
+
 clean:
 	rm *.out
